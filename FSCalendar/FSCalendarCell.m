@@ -300,10 +300,14 @@
 
 - (UIColor *)colorForCellBorder
 {
-    if (self.selected) {
-        return _preferredBorderSelectionColor ?: _appearance.borderSelectionColor;
+    if (self.dateIsToday) {
+        return _appearance.borderTodayColor;
+    } else {
+        if (self.selected) {
+            return _preferredBorderSelectionColor ?: _appearance.borderSelectionColor;
+        }
+        return _preferredBorderDefaultColor ?: _appearance.borderDefaultColor;
     }
-    return _preferredBorderDefaultColor ?: _appearance.borderDefaultColor;
 }
 
 - (NSArray<UIColor *> *)colorsForEvents
